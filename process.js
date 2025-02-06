@@ -15,7 +15,7 @@ var readyPromise = new Promise((resolve, reject) => {
  readyPromiseReject = reject;
 });
 
-[ "_malloc", "_memory", "_handle", "___indirect_function_table", "_hello", "___asyncjs__weavedrive_open", "___asyncjs__weavedrive_read", "___asyncjs__weavedrive_close", "_main", "onRuntimeInitialized" ].forEach(prop => {
+[ "_malloc", "_memory", "_handle", "___indirect_function_table", "___asyncjs__weavedrive_open", "___asyncjs__weavedrive_read", "___asyncjs__weavedrive_close", "_metering_gasUsed", "_main", "onRuntimeInitialized" ].forEach(prop => {
  if (!Object.getOwnPropertyDescriptor(readyPromise, prop)) {
   Object.defineProperty(readyPromise, prop, {
    get: () => abort("You are getting " + prop + " on the Promise object, instead of the instance. Use .then() to get called back with the instance, see the MODULARIZE docs in src/settings.js"),
@@ -675,6 +675,10 @@ function __asyncjs__weavedrive_close(fd) {
   const drive = Module.WeaveDrive(Module, FS);
   return drive.close(fd);
  });
+}
+
+function metering_gasUsed() {
+ return Module.gas.used;
 }
 
 /** @constructor */ function ExitStatus(status) {
@@ -4619,6 +4623,7 @@ var wasmImports = {
  /** @export */ fd_seek: _fd_seek,
  /** @export */ fd_write: _fd_write,
  /** @export */ invoke_vjj: invoke_vjj,
+ /** @export */ metering_gasUsed: metering_gasUsed,
  /** @export */ strftime: _strftime
 };
 
@@ -4633,8 +4638,6 @@ var _free = createExportWrapper("free", 1);
 var _fflush = createExportWrapper("fflush", 1);
 
 var _main = Module["_main"] = createExportWrapper("main", 2);
-
-var _hello = Module["_hello"] = createExportWrapper("hello", 0);
 
 var _malloc = Module["_malloc"] = createExportWrapper("malloc", 1);
 
@@ -4684,9 +4687,9 @@ var _asyncify_start_rewind = createExportWrapper("asyncify_start_rewind", 1);
 
 var _asyncify_stop_rewind = createExportWrapper("asyncify_stop_rewind", 0);
 
-var ___start_em_js = Module["___start_em_js"] = 55168;
+var ___start_em_js = Module["___start_em_js"] = 414464;
 
-var ___stop_em_js = Module["___stop_em_js"] = 55782;
+var ___stop_em_js = Module["___stop_em_js"] = 415112;
 
 function invoke_vjj(index, a1, a2) {
  var sp = stackSave();

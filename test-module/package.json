@@ -1,13 +1,13 @@
 {
   "type": "module",
-  "name": "test2",
+  "name": "hello-test",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "hello.test.js",
   "license": "MIT",
   "dependencies": {
-      "@permaweb/ao-loader": "^0.0.40"
-    },
+    "@permaweb/ao-loader": "^0.0.40"
+  },
   "scripts": {
-    "test": "node --test --experimental-wasm-memory64 test.js"
+    "test": "node --test --experimental-wasm-memory64 hello.test.js"
   }
 }
