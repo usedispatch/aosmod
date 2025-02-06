@@ -9,8 +9,8 @@ async function main() {
   await env.init();
 
   const result = await env.send({
-    Action: "Eval",
-    Data: "return 'Hello from Lua via WASM!'"
+    Action: "hello",
+    Data: "ping"
   });
 
   console.log("Result:", result.Output);
